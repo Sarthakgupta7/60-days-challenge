@@ -4,11 +4,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 np.random.seed(42)
 
-# Simulated embeddings
-X = np.random.rand(5, 4)  # 5 samples, 4-dimensional embeddings
+X = np.random.rand(5, 4)  
 true_W = np.random.rand(4, 4)
 
-# Create target embeddings using true transformation
 Y = X @ true_W
 def cost_function(W_flat, X, Y):
     W = W_flat.reshape(4, 4)
