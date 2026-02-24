@@ -52,45 +52,20 @@ def clean_text(text):
 
 df["clean_text"] = df["text"].apply(clean_text)
 
-
-# ======================================================
-# 3️⃣ Feature Extraction (TF-IDF)
-# ======================================================
-
 vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(df["clean_text"])
 y = df["label"]
 
 print("Feature Matrix Shape:", X.shape)
 
-
-# ======================================================
-# 4️⃣ Train-Test Split
-# ======================================================
-
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=42
 )
 
-
-# ======================================================
-# 5️⃣ Train Logistic Regression Model
-# ======================================================
-
 model = LogisticRegression()
 model.fit(X_train, y_train)
 
-
-# ======================================================
-# 6️⃣ Predictions
-# ======================================================
-
 y_pred = model.predict(X_test)
-
-
-# ======================================================
-# 7️⃣ Evaluation Metrics
-# ======================================================
 
 print("\nModel Evaluation:")
 
